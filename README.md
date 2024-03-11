@@ -2,7 +2,7 @@
 
 ## _Let's improve customer experience_
 
-Resume: Today you will see how to add a new business feature into our data model
+Resume: Today you will see how to add a new business feature into our data model.
 
 ## Contents
 
@@ -32,13 +32,13 @@ Resume: Today you will see how to add a new business feature into our data model
 
 ![D06_01](misc/images/D06_01.png)
 
-Why is a diamond one of the most durable objects? The reason is in the structure. Every atom knows about his place in diamond’s topology and makes the whole diamond unbreakable. 
+Why is a diamond one of the most durable objects? The reason lies in its structure. Each atom knows its place in the topology of the diamond and makes the whole diamond unbreakable. 
 
-Logical structure is like a diamond. If you find an appropriate structure for your own Database Model then you find gold (or diamond :-). There are two aspects of Database Modeling. The first one is a logical view, in other words how your model will smoothly describe the real business world. 
+A logical structure is like a diamond. If you find a suitable structure for your own Database Model, you will find gold (or diamond :-). There are two aspects to Database Modeling. The first is a logical view, in other words, how your model will smoothly describe the real business world.
 
 ![D06_02](misc/images/D06_02.png)
 
-On the other hand, your model should solve your functional tasks with minimal impaction. It means, logical model view transforms to physical model view and not just from table and attributes descriptions. But actually, from performance and budget perspectives that are more mainly nowadays. How to find a balance? For this case there are 3 steps to create a very good design. Just take a look at the picture below. 
+On the other hand, your model should solve your functional tasks with minimal impact. This means transforming the logical model view into the physical model view, and not just from table and attribute descriptions. But actually, from performance and budget perspectives, which are more important today. How to find a balance? For this case, there are 3 steps to create a very good design. Just take a look at the image below.
 
 ![D06_03](misc/images/D06_03.png)
 
@@ -46,24 +46,24 @@ On the other hand, your model should solve your functional tasks with minimal im
 ## Chapter II
 ## General Rules
 
-- Use this page as the only reference. Do not listen to any rumors and speculations on how to prepare your solution.
-- Please make sure you are using the latest version of PostgreSQL.
-- That is completely OK if you are using IDE to write a source code (aka SQL script).
-- To be assessed your solution must be in your GIT repository.
-- Your solutions will be evaluated by your piscine mates.
-- You should not leave in your directory any other file than those explicitly specified by the exercise instructions. It is recommended that you modify your `.gitignore` to avoid accidents.
-- Do you have a question? Ask your neighbor on the right. Otherwise, try with your neighbor on the left.
+- Use this page as your only reference. Do not listen to rumors and speculations about how to prepare your solution.
+- Make sure you are using the latest version of PostgreSQL.
+- It is perfectly fine if you use the IDE to write source code (aka SQL script).
+- To be evaluated, your solution must be in your GIT repository.
+- Your solutions will be evaluated by your peers.
+- You should not leave any files in your directory other than those explicitly specified by the exercise instructions. It is recommended that you modify your `.gitignore` to avoid accidents.
+- Got a question? Ask your neighbor to the right. Otherwise, try your neighbor on the left.
 - Your reference manual: mates / Internet / Google. 
-- Read the examples carefully. They may require things that are not otherwise specified in the subject.
+- Read the examples carefully. You may need things not specified in the topic.
 - And may the SQL-Force be with you!
-- Absolutely everything can be presented in SQL! Let’s start and have fun!
+Absolutely anything can be represented in SQL! Let's get started and have fun!
 
 ## Chapter III
 ## Rules of the day
 
-- Please make sure you have an own database and access for it on your PostgreSQL cluster. 
-- Please download a [script](materials/model.sql) with Database Model here and apply the script to your database (you can use command line with psql or just run it through any IDE, for example DataGrip from JetBrains or pgAdmin from PostgreSQL community). **Our knowledge way is incremental and linear therefore please be aware all changes that you made in Day03 during exercises 07-13 and in Day04 during exercise 07 should be on place (its similar like in real world , when we applied a release and need to be consistency with data for new changes).**
-- All tasks contain a list of Allowed and Denied sections with listed database options, database types, SQL constructions etc. Please have a look at the section before you start.
+- Please make sure you have your own database and access to it on your PostgreSQL cluster. 
+- Please download a [script](materials/model.sql) with Database Model here and apply the script to your database (you can use command line with psql or just run it through any IDE, for example DataGrip from JetBrains or pgAdmin from PostgreSQL community). **Our knowledge way is incremental and linear therefore please be aware that all changes you made in Day03 during Exercises 07-13 and in Day04 during Exercise 07 should be on place (its similar like in real world when we applied a release and need to be consistent with data for new changes).**
+- All tasks contain a list of Allowed and Denied sections with listed database options, database types, SQL constructions etc. Please review this section before starting.
 - Please take a look at the Logical View of our Database Model. 
 
 ![schema](misc/images/schema.png)
@@ -95,8 +95,7 @@ On the other hand, your model should solve your functional tasks with minimal im
 - field menu_id - foreign key to menu
 - field order_date - date (for example 2022-01-01) of person order 
 
-Persons' visit and persons' order are different entities and don't contain any correlation between data. For example, a client can be in one restaurant (just looking at menu) and in this time make an order in different one by phone or by mobile application. Or another case,  just be at home and again make a call with order without any visits.
-
+People's visit and people's order are different entities and don't contain any correlation between data. For example, a customer can be in a restaurant (just looking at the menu) and at the same time place an order in another restaurant by phone or mobile application. Or another case, just be at home and again make a call with order without any visits.
 
 ## Chapter IV
 ## Exercise 00 - Discounts, discounts , everyone loves discounts
@@ -108,14 +107,14 @@ Persons' visit and persons' order are different entities and don't contain any c
 | **Allowed**                               |                                                                                                                          |
 | Language                        | SQL, DML, DDL                                                                                              |
 
-Let’s expand our data model to involve a new business feature.
-Every person wants to see a personal discount and every business wants to be closer for clients.
+Let's add a new business feature to our data model.
+Every person wants to see a personal discount and every business wants to be closer for customers.
 
-Please think about personal discounts for people from one side and pizzeria restaurants from other. Need to create a new relational table (please set a name `person_discounts`) with the next rules.
-- set id attribute like a Primary Key (please take a look on id column in existing tables and choose the same data type)
-- set for attributes person_id and pizzeria_id foreign keys for corresponding tables (data types should be the same like for id columns in corresponding parent tables)
-- please set explicit names for foreign keys constraints by pattern fk_{table_name}_{column_name},  for example `fk_person_discounts_person_id`
-- add a discount attribute to store a value of discount in percent. Remember, discount value can be a number with floats (please just use `numeric` data type). So, please choose the corresponding data type to cover this possibility.
+Think about personal discounts for people from one side and pizza restaurants from the other. Need to create a new relational table (please set a name `person_discounts`) with the following rules.
+- Set id attribute like a Primary Key (please have a look at id column in existing tables and choose the same data type).
+- Set attributes person_id and pizzeria_id as foreign keys for corresponding tables (data types should be the same as for id columns in corresponding parent tables).
+- Please set explicit names for foreign key constraints using the pattern fk_{table_name}_{column_name}, for example `fk_person_discounts_person_id`.
+- Add a discount attribute to store a discount value in percent. Remember that the discount value can be a floating-point number (just use the `numeric` datatype). So please choose the appropriate datatype to cover this possibility.
 
 
 
@@ -129,11 +128,11 @@ Please think about personal discounts for people from one side and pizzeria rest
 | **Allowed**                               |                                                                                                                          |
 | Language                        | SQL, DML, DDL                                                                                              |
 
-Actually, we created a structure to store our discounts and we are ready to go further and fill our `person_discounts` table with new records.
+Actually, we have created a structure to store our discounts and we are ready to go further and fill our `person_discounts` table with new records.
 
-So, there is a table `person_order` that stores the history of a person's orders. Please write a DML statement (`INSERT INTO ... SELECT ...`) that makes  inserts new records into `person_discounts` table based on the next rules.
-- take aggregated state by person_id and pizzeria_id columns 
-- calculate personal discount value by the next pseudo code:
+So, there is a table `person_order` which stores the history of a person's orders. Please write a DML statement (`INSERT INTO ... SELECT ...`) that makes inserts new records into the `person_discounts` table based on the following rules.
+- Take aggregated state from person_id and pizzeria_id columns.
+- Calculate personal discount value by the next pseudo code:
 
     `if “amount of orders” = 1 then
         “discount” = 10.5 
@@ -142,7 +141,7 @@ So, there is a table `person_order` that stores the history of a person's orders
     else 
         “discount” = 30`
 
-- to generate a primary key for the person_discounts table please use  SQL construction below (this construction is from the WINDOW FUNCTION  SQL area).
+- To create a primary key for the person_discounts table, use the following SQL construct (this construct is from the WINDOW FUNCTION SQL section).
     
     `... ROW_NUMBER( ) OVER ( ) AS id ...`
 
@@ -159,7 +158,7 @@ So, there is a table `person_order` that stores the history of a person's orders
 | **Allowed**                               |                                                                                                                          |
 | Language                        | SQL, DML, DDL                                                                                              |
 
-Please write a SQL statement that returns orders with actual price and price with applied discount for each person in the corresponding pizzeria restaurant and sort by person name, and pizza name. Please take a look at the sample of data below.
+Write a SQL statement that returns the orders with actual price and price with discount applied for each person in the corresponding pizzeria restaurant, sorted by person name and pizza name. Please see the sample data below.
 
 | name | pizza_name | price | discount_price | pizzeria_name | 
 | ------ | ------ | ------ | ------ | ------ |
@@ -178,10 +177,10 @@ Please write a SQL statement that returns orders with actual price and price wit
 | Language                        | SQL, DML, DDL                                                                                              |
 
 
-Actually, we have to make improvements to data consistency from one side and performance tuning from the other side. Please create a multicolumn unique index (with name `idx_person_discounts_unique`) that prevents duplicates of pair values person and pizzeria identifiers.
+Actually, we need to improve data consistency from one side and performance tuning from the other side. Please create a multi-column unique index (named `idx_person_discounts_unique`) that prevents duplicates of the person and pizzeria identifier pairs.
 
-After creation of a new index, please provide any simple SQL statement that shows proof of index usage (by using `EXPLAIN ANALYZE`).
-The example of “proof” is below
+After creating a new index, please provide any simple SQL statement that shows proof of the index usage (using `EXPLAIN ANALYZE`).
+The proof example is below:
     
     ...
     Index Scan using idx_person_discounts_unique on person_discounts
@@ -200,11 +199,11 @@ The example of “proof” is below
 | Language                        | SQL, DML, DDL                                                                                              |
 
 Please add the following constraint rules for existing columns of the `person_discounts` table.
-- person_id column should not be NULL (use constraint name `ch_nn_person_id`)
-- pizzeria_id column should not be NULL (use constraint name `ch_nn_pizzeria_id`)
-- discount column should not be NULL (use constraint name `ch_nn_discount`)
-- discount column should be 0 percent by default
-- discount column should be in a range values from 0 to 100 (use constraint name `ch_range_discount`)
+- person_id column should not be NULL (use constraint name `ch_nn_person_id`);
+- pizzeria_id column should not be NULL (use constraint name `ch_nn_pizzeria_id`);
+- discount column should not be NULL (use constraint name `ch_nn_discount`);
+- discount column should be 0 percent by default;
+- discount column should be in a range values from 0 to 100 (use constraint name `ch_range_discount`).
 
 
 ## Chapter IX
@@ -218,7 +217,7 @@ Please add the following constraint rules for existing columns of the `person_di
 | **Allowed**                               |                                                                                                                          |
 | Language                        |  SQL, DML, DDL                                                                                              |
 
-To satisfy Data Governance Policies need to add comments for the table and table's columns. Let’s apply this policy for the `person_discounts` table. Please add English or Russian comments (it's up to you) that explain what is a business goal of a table and all included attributes. 
+To comply with Data Governance Policies, you need to add comments for the table and the table's columns. Let's apply this policy to the `person_discounts` table. Please add English or Russian comments (it is up to you) explaining what is a business goal of a table and all its attributes.
 
 ## Chapter X
 ## Exercise 06 - Let’s automate Primary Key generation
@@ -233,6 +232,6 @@ To satisfy Data Governance Policies need to add comments for the table and table
 | **Denied**                               |                                                                                                                          |
 | SQL Syntax Pattern                        | Don’t use hard-coded value for amount of rows to set a right value for sequence                                                                                              |
 
-Let’s create a Database Sequence with the name `seq_person_discounts` (starting from 1 value) and set a default value for id attribute of `person_discounts` table to take a value from `seq_person_discounts` each time automatically. 
-Please be aware that your next sequence number is 1, in this case please set an actual value for database sequence based on formula “amount of rows in person_discounts table” + 1. Otherwise you will get errors about Primary Key violation constraint.
+Let’s create a Database Sequence named `seq_person_discounts` (starting with a value of 1) and set a default value for the id attribute of the `person_discounts` table to automatically take a value from `seq_person_discounts` each time. 
+Please note that your next sequence number is 1, in this case please set an actual value for database sequence based on formula "number of rows in person_discounts table" + 1. Otherwise you will get errors about Primary Key violation constraint.
 
