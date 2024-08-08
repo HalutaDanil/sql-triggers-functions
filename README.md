@@ -1,4 +1,4 @@
-# Day 06 - Piscine SQL
+# Day 06 — SQL Bootcamp
 
 ## _Let's improve customer experience_
 
@@ -15,19 +15,19 @@ Resume: Today you will see how to add a new business feature into our data model
 3. [Chapter III](#chapter-iii) \
     3.1. [Rules of the day](#rules-of-the-day)  
 4. [Chapter IV](#chapter-iv) \
-    4.1. [Exercise 00 - Discounts, discounts , everyone loves discounts](#exercise-00-discounts-discounts-everyone-loves-discounts)  
+    4.1. [Exercise 00 — Discounts, discounts , everyone loves discounts](#exercise-00-discounts-discounts-everyone-loves-discounts)  
 5. [Chapter V](#chapter-v) \
-    5.1. [Exercise 01 - Let’s set personal discounts](#exercise-01-lets-set-personal-discounts)  
+    5.1. [Exercise 01 — Let’s set personal discounts](#exercise-01-lets-set-personal-discounts)  
 6. [Chapter VI](#chapter-vi) \
-    6.1. [Exercise 02 - Let’s recalculate a history of orders.](#exercise-02-lets-recalculate-a-history-of-orders)  
+    6.1. [Exercise 02 — Let’s recalculate a history of orders.](#exercise-02-lets-recalculate-a-history-of-orders)  
 7. [Chapter VII](#chapter-vii) \
-    7.1. [Exercise 03 - Improvements are in a way](#exercise-03-improvements-are-in-a-way)  
+    7.1. [Exercise 03 — Improvements are in a way](#exercise-03-improvements-are-in-a-way)  
 8. [Chapter VIII](#chapter-viii) \
-    8.1. [Exercise 04 - We need more Data Consistency](#exercise-04-we-need-more-data-consistency)
+    8.1. [Exercise 04 — We need more Data Consistency](#exercise-04-we-need-more-data-consistency)
 9. [Chapter IX](#chapter-ix) \
-    9.1. [Exercise 05 - Data Governance Rules](#exercise-05-data-governance-rules)
+    9.1. [Exercise 05 — Data Governance Rules](#exercise-05-data-governance-rules)
 10. [Chapter X](#chapter-x) \
-    10.1. [Exercise 06 - Let’s automate Primary Key generation](#exercise-06-lets-automate-primary-key-generation)
+    10.1. [Exercise 06 — Let’s automate Primary Key generation](#exercise-06-lets-automate-primary-key-generation)
 
 ## Chapter I
 ## Preamble
@@ -72,35 +72,35 @@ Absolutely anything can be represented in SQL! Let's get started and have fun!
 
 
 1. **pizzeria** table (Dictionary Table with available pizzerias)
-- field id - primary key
-- field name - name of pizzeria
-- field rating - average rating of pizzeria (from 0 to 5 points)
+- field id — primary key
+- field name — name of pizzeria
+- field rating — average rating of pizzeria (from 0 to 5 points)
 2. **person** table (Dictionary Table with persons who loves pizza)
-- field id - primary key
-- field name - name of person
-- field age - age of person
-- field gender - gender of person
-- field address - address of person
+- field id — primary key
+- field name — name of person
+- field age — age of person
+- field gender — gender of person
+- field address — address of person
 3. **menu** table (Dictionary Table with available menu and price for concrete pizza)
-- field id - primary key
-- field pizzeria_id - foreign key to pizzeria
-- field pizza_name - name of pizza in pizzeria
-- field price - price of concrete pizza
+- field id — primary key
+- field pizzeria_id — foreign key to pizzeria
+- field pizza_name — name of pizza in pizzeria
+- field price — price of concrete pizza
 4. **person_visits** table (Operational Table with information about visits of pizzeria)
-- field id - primary key
-- field person_id - foreign key to person
-- field pizzeria_id - foreign key to pizzeria
-- field visit_date - date (for example 2022-01-01) of person visit 
+- field id — primary key
+- field person_id — foreign key to person
+- field pizzeria_id — foreign key to pizzeria
+- field visit_date — date (for example 2022-01-01) of person visit 
 5. **person_order** table (Operational Table with information about persons orders)
-- field id - primary key
-- field person_id - foreign key to person
-- field menu_id - foreign key to menu
-- field order_date - date (for example 2022-01-01) of person order 
+- field id — primary key
+- field person_id — foreign key to person
+- field menu_id — foreign key to menu
+- field order_date — date (for example 2022-01-01) of person order 
 
 People's visit and people's order are different entities and don't contain any correlation between data. For example, a customer can be in a restaurant (just looking at the menu) and at the same time place an order in another restaurant by phone or mobile application. Or another case, just be at home and again make a call with order without any visits.
 
 ## Chapter IV
-## Exercise 00 - Discounts, discounts , everyone loves discounts
+## Exercise 00 — Discounts, discounts , everyone loves discounts
 
 | Exercise 00: Discounts, discounts , everyone loves discounts |                                                                                                                          |
 |---------------------------------------|--------------------------------------------------------------------------------------------------------------------------|
@@ -121,7 +121,7 @@ Think about personal discounts for people from one side and pizza restaurants fr
 
 
 ## Chapter V
-## Exercise 01 - Let’s set personal discounts
+## Exercise 01 — Let’s set personal discounts
 
 | Exercise 01: Let’s set personal discounts|                                                                                                                          |
 |---------------------------------------|--------------------------------------------------------------------------------------------------------------------------|
@@ -151,7 +151,7 @@ So, there is a table `person_order` which stores the history of a person's order
 
 
 ## Chapter VI
-## Exercise 02 - Let’s recalculate a history of orders
+## Exercise 02 — Let’s recalculate a history of orders
 
 | Exercise 02: Let’s recalculate a history of orders|                                                                                                                          |
 |---------------------------------------|--------------------------------------------------------------------------------------------------------------------------|
@@ -169,7 +169,7 @@ Write a SQL statement that returns the orders with actual price and price with d
 | ... | ... | ... | ... | ... |
 
 ## Chapter VII
-## Exercise 03 - Improvements are in a way
+## Exercise 03 — Improvements are in a way
 
 | Exercise 03: Improvements are in a way |                                                                                                                          |
 |---------------------------------------|--------------------------------------------------------------------------------------------------------------------------|
@@ -190,7 +190,7 @@ The proof example is below:
 
 
 ## Chapter VIII
-## Exercise 04 - We need more Data Consistency
+## Exercise 04 — We need more Data Consistency
 
 
 | Exercise 04: We need more Data Consistency |                                                                                                                          |
@@ -209,7 +209,7 @@ Please add the following constraint rules for existing columns of the `person_di
 
 
 ## Chapter IX
-## Exercise 05 - Data Governance Rules
+## Exercise 05 — Data Governance Rules
 
 
 | Exercise 05: Data Governance Rules|                                                                                                                          |
@@ -222,7 +222,7 @@ Please add the following constraint rules for existing columns of the `person_di
 To comply with Data Governance Policies, you need to add comments for the table and the table's columns. Let's apply this policy to the `person_discounts` table. Please add English or Russian comments (it is up to you) explaining what is a business goal of a table and all its attributes.
 
 ## Chapter X
-## Exercise 06 - Let’s automate Primary Key generation
+## Exercise 06 — Let’s automate Primary Key generation
 
 
 | Exercise 06: Let’s automate Primary Key generation|                                                                                                                          |
