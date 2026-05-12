@@ -29,25 +29,6 @@ Server-side database programming: creating functions, triggers, stored procedure
 | ex05 | INSTEAD OF trigger for VIEW |
 | ex06 | Cursors |
 
-### 🚀 Quick Start
-
-```sql
--- Logger function
-CREATE OR REPLACE FUNCTION log_insert()
-RETURNS TRIGGER AS $$
-BEGIN
-    INSERT INTO audit_log (table_name, action, changed_at)
-    VALUES (TG_TABLE_NAME, 'INSERT', NOW());
-    RETURN NEW;
-END;
-$$ LANGUAGE plpgsql;
-
--- Trigger
-CREATE TRIGGER trg_person_insert
-AFTER INSERT ON person
-FOR EACH ROW
-EXECUTE FUNCTION log_insert();
-```
 
 ---
 
@@ -76,25 +57,6 @@ EXECUTE FUNCTION log_insert();
 | ex05 | INSTEAD OF триггер для VIEW |
 | ex06 | Курсоры |
 
-### 🚀 Быстрый старт
-
-```sql
--- Функция-логгер
-CREATE OR REPLACE FUNCTION log_insert()
-RETURNS TRIGGER AS $$
-BEGIN
-    INSERT INTO audit_log (table_name, action, changed_at)
-    VALUES (TG_TABLE_NAME, 'INSERT', NOW());
-    RETURN NEW;
-END;
-$$ LANGUAGE plpgsql;
-
--- Триггер
-CREATE TRIGGER trg_person_insert
-AFTER INSERT ON person
-FOR EACH ROW
-EXECUTE FUNCTION log_insert();
-```
 
 ---
 
