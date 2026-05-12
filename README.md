@@ -19,11 +19,35 @@ Server-side database programming: creating functions, triggers, stored procedure
 
 ### ✨ Features
 
-| Exercise | Topic |\n|----------|-------|\n| ex00 | Scalar functions |\n| ex01 | Table-returning functions |\n| ex02 | INSERT trigger |\n| ex03 | UPDATE trigger |\n| ex04 | DELETE trigger |\n| ex05 | INSTEAD OF trigger for VIEW |\n| ex06 | Cursors |
+| Exercise | Topic |
+|----------|-------|
+| ex00 | Scalar functions |
+| ex01 | Table-returning functions |
+| ex02 | INSERT trigger |
+| ex03 | UPDATE trigger |
+| ex04 | DELETE trigger |
+| ex05 | INSTEAD OF trigger for VIEW |
+| ex06 | Cursors |
 
 ### 🚀 Quick Start
 
-```sql\n-- Logger function\nCREATE OR REPLACE FUNCTION log_insert()\nRETURNS TRIGGER AS $$\nBEGIN\n    INSERT INTO audit_log (table_name, action, changed_at)\n    VALUES (TG_TABLE_NAME, 'INSERT', NOW());\n    RETURN NEW;\nEND;\n$$ LANGUAGE plpgsql;\n\n-- Trigger\nCREATE TRIGGER trg_person_insert\nAFTER INSERT ON person\nFOR EACH ROW\nEXECUTE FUNCTION log_insert();\n```
+```sql
+-- Logger function
+CREATE OR REPLACE FUNCTION log_insert()
+RETURNS TRIGGER AS $$
+BEGIN
+    INSERT INTO audit_log (table_name, action, changed_at)
+    VALUES (TG_TABLE_NAME, 'INSERT', NOW());
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+-- Trigger
+CREATE TRIGGER trg_person_insert
+AFTER INSERT ON person
+FOR EACH ROW
+EXECUTE FUNCTION log_insert();
+```
 
 ---
 
@@ -42,11 +66,35 @@ Server-side database programming: creating functions, triggers, stored procedure
 
 ### ✨ Возможности
 
-| Задача | Тема |\n|--------|------|\n| ex00 | Скалярные функции |\n| ex01 | Функции, возвращающие таблицы |\n| ex02 | Триггер на INSERT |\n| ex03 | Триггер на UPDATE |\n| ex04 | Триггер на DELETE |\n| ex05 | INSTEAD OF триггер для VIEW |\n| ex06 | Курсоры |
+| Задача | Тема |
+|--------|------|
+| ex00 | Скалярные функции |
+| ex01 | Функции, возвращающие таблицы |
+| ex02 | Триггер на INSERT |
+| ex03 | Триггер на UPDATE |
+| ex04 | Триггер на DELETE |
+| ex05 | INSTEAD OF триггер для VIEW |
+| ex06 | Курсоры |
 
 ### 🚀 Быстрый старт
 
-```sql\n-- Функция-логгер\nCREATE OR REPLACE FUNCTION log_insert()\nRETURNS TRIGGER AS $$\nBEGIN\n    INSERT INTO audit_log (table_name, action, changed_at)\n    VALUES (TG_TABLE_NAME, 'INSERT', NOW());\n    RETURN NEW;\nEND;\n$$ LANGUAGE plpgsql;\n\n-- Триггер\nCREATE TRIGGER trg_person_insert\nAFTER INSERT ON person\nFOR EACH ROW\nEXECUTE FUNCTION log_insert();\n```
+```sql
+-- Функция-логгер
+CREATE OR REPLACE FUNCTION log_insert()
+RETURNS TRIGGER AS $$
+BEGIN
+    INSERT INTO audit_log (table_name, action, changed_at)
+    VALUES (TG_TABLE_NAME, 'INSERT', NOW());
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+-- Триггер
+CREATE TRIGGER trg_person_insert
+AFTER INSERT ON person
+FOR EACH ROW
+EXECUTE FUNCTION log_insert();
+```
 
 ---
 
