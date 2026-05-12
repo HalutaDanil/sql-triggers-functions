@@ -1,49 +1,57 @@
-# SQL: Integrating Features
+<div align="center">
 
-> Триггеры, функции и процедуры на PL/pgSQL
+# SQL Triggers and Functions
 
-## О проекте
+**[English](#english) | [Русский](#русский)**
 
-Изучение программирования на стороне сервера БД: создание функций, триггеров, хранимых процедур и курсоров на языке PL/pgSQL.
-
-## Что изучено
-
-| Задача | Тема |
-|--------|------|
-| `ex00` | Скалярные функции |
-| `ex01` | Функции, возвращающие таблицы |
-| `ex02` | `TRIGGER` на `INSERT` |
-| `ex03` | `TRIGGER` на `UPDATE` |
-| `ex04` | `TRIGGER` на `DELETE` |
-| `ex05` | `INSTEAD OF TRIGGER` для VIEW |
-| `ex06` | Курсоры |
-
-## Пример: триггер с функцией
-
-```sql
--- Функция-логгер
-CREATE OR REPLACE FUNCTION log_insert()
-RETURNS TRIGGER AS $$
-BEGIN
-    INSERT INTO audit_log (table_name, action, changed_at)
-    VALUES (TG_TABLE_NAME, 'INSERT', NOW());
-    RETURN NEW;
-END;
-$$ LANGUAGE plpgsql;
-
--- Триггер
-CREATE TRIGGER trg_person_insert
-AFTER INSERT ON person
-FOR EACH ROW
-EXECUTE FUNCTION log_insert();
-```
-
-## Технологии
-
-- **PostgreSQL**
-- **PL/pgSQL** — процедурное расширение SQL
-- **Триггеры**, **функции**, **курсоры**
+</div>
 
 ---
 
-*Проект из портфолио*
+<a name="english"></a>
+## 🇬🇧 English
+
+Server-side database programming: creating functions, triggers, stored procedures, and cursors in PL/pgSQL.
+
+### 🛠️ Tech Stack
+
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=flat-square&logo=postgresql&logoColor=white) ![PL/pgSQL](https://img.shields.io/badge/PL/pgSQL-336791?style=flat-square)
+
+### ✨ Features
+
+| Exercise | Topic |\n|----------|-------|\n| ex00 | Scalar functions |\n| ex01 | Table-returning functions |\n| ex02 | INSERT trigger |\n| ex03 | UPDATE trigger |\n| ex04 | DELETE trigger |\n| ex05 | INSTEAD OF trigger for VIEW |\n| ex06 | Cursors |
+
+### 🚀 Quick Start
+
+```sql\n-- Logger function\nCREATE OR REPLACE FUNCTION log_insert()\nRETURNS TRIGGER AS $$\nBEGIN\n    INSERT INTO audit_log (table_name, action, changed_at)\n    VALUES (TG_TABLE_NAME, 'INSERT', NOW());\n    RETURN NEW;\nEND;\n$$ LANGUAGE plpgsql;\n\n-- Trigger\nCREATE TRIGGER trg_person_insert\nAFTER INSERT ON person\nFOR EACH ROW\nEXECUTE FUNCTION log_insert();\n```
+
+---
+
+<div align="center">
+  <img src="https://capsule-render.vercel.app/api?type=rect&color=0:58a6ff,50:1f6feb,100:0969da&height=2&section=header&text=&fontSize=1"/>
+</div>
+
+<a name="русский"></a>
+## 🇷🇺 Русский
+
+Программирование на стороне сервера БД: создание функций, триггеров, хранимых процедур и курсоров на языке PL/pgSQL.
+
+### 🛠️ Стек технологий
+
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=flat-square&logo=postgresql&logoColor=white) ![PL/pgSQL](https://img.shields.io/badge/PL/pgSQL-336791?style=flat-square)
+
+### ✨ Возможности
+
+| Задача | Тема |\n|--------|------|\n| ex00 | Скалярные функции |\n| ex01 | Функции, возвращающие таблицы |\n| ex02 | Триггер на INSERT |\n| ex03 | Триггер на UPDATE |\n| ex04 | Триггер на DELETE |\n| ex05 | INSTEAD OF триггер для VIEW |\n| ex06 | Курсоры |
+
+### 🚀 Быстрый старт
+
+```sql\n-- Функция-логгер\nCREATE OR REPLACE FUNCTION log_insert()\nRETURNS TRIGGER AS $$\nBEGIN\n    INSERT INTO audit_log (table_name, action, changed_at)\n    VALUES (TG_TABLE_NAME, 'INSERT', NOW());\n    RETURN NEW;\nEND;\n$$ LANGUAGE plpgsql;\n\n-- Триггер\nCREATE TRIGGER trg_person_insert\nAFTER INSERT ON person\nFOR EACH ROW\nEXECUTE FUNCTION log_insert();\n```
+
+---
+
+<div align="center">
+
+*Project from portfolio | Проект из портфолио*
+
+</div>
